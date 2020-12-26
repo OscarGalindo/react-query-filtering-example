@@ -1,0 +1,92 @@
+[
+  {
+    "id": "22c4c99f-83e1-453e-83f8-0dde974f6121",
+    "name": "Monroe Muller",
+    "email": "Monroe.Muller@gmail.com",
+    "city": "East Tomas",
+    "username": "Monroe_Muller74",
+    "status": "Pending",
+    "avatar": "https://i.pravatar.cc/150?u=Monroe.Muller@gmail.com"
+  },
+  {
+    "id": "67d49d0a-4933-49ff-9f03-d5850be795d6",
+    "name": "Sydnee Streich",
+    "email": "Sydnee89@hotmail.com",
+    "city": "Douglasborough",
+    "username": "Sydnee_Streich97",
+    "status": "Blocked",
+    "avatar": "https://i.pravatar.cc/150?u=Sydnee89@hotmail.com"
+  },
+  {
+    "id": "b4cbcf3d-c1e4-49f3-9ad3-62bd3b717928",
+    "name": "Esta Howell",
+    "email": "Esta15@yahoo.com",
+    "city": "East Jarretfort",
+    "username": "Esta_Howell54",
+    "status": "Pending",
+    "avatar": "https://i.pravatar.cc/150?u=Esta15@yahoo.com"
+  },
+  {
+    "id": "d1191007-5303-4a75-b77e-fa0cacea13a7",
+    "name": "Mr. Cathy Bosco",
+    "email": "Cathy.Bosco@yahoo.com",
+    "city": "Brownmouth",
+    "username": "Cathy.Bosco",
+    "status": "Active",
+    "avatar": "https://i.pravatar.cc/150?u=Cathy.Bosco@yahoo.com"
+  },
+  {
+    "id": "93b3a81c-3665-4668-8017-d90e1c4e6377",
+    "name": "Esperanza Hammes",
+    "email": "Esperanza67@yahoo.com",
+    "city": "East Hilda",
+    "username": "Esperanza34",
+    "status": "Active",
+    "avatar": "https://i.pravatar.cc/150?u=Esperanza67@yahoo.com"
+  },
+  {
+    "id": "ca319eb3-6009-412c-9fe6-763430c89593",
+    "name": "Dennis Johnston",
+    "email": "Dennis74@hotmail.com",
+    "city": "West Melodyborough",
+    "username": "Dennis.Johnston",
+    "status": "Blocked",
+    "avatar": "https://i.pravatar.cc/150?u=Dennis74@hotmail.com"
+  },
+  {
+    "id": "eacf37db-106a-486e-968b-eccbd12b0f57",
+    "name": "Zella Lindgren",
+    "email": "Zella.Lindgren17@yahoo.com",
+    "city": "Domenickfurt",
+    "username": "Zella_Lindgren",
+    "status": "Blocked",
+    "avatar": "https://i.pravatar.cc/150?u=Zella.Lindgren17@yahoo.com"
+  },
+  {
+    "id": "cafea876-898b-451b-8e4c-ad5fdb157abe",
+    "name": "Katelyn Cartwright",
+    "email": "Katelyn58@yahoo.com",
+    "city": "Port Tristonfurt",
+    "username": "Katelyn.Cartwright6",
+    "status": "Pending",
+    "avatar": "https://i.pravatar.cc/150?u=Katelyn58@yahoo.com"
+  },
+  {
+    "id": "ba34f915-bda0-4bf3-929e-4c42e9afbd5c",
+    "name": "Gilda Monahan Sr.",
+    "email": "Gilda_Monahan@yahoo.com",
+    "city": "Gradyburgh",
+    "username": "Gilda42",
+    "status": "Pending",
+    "avatar": "https://i.pravatar.cc/150?u=Gilda_Monahan@yahoo.com"
+  },
+  {
+    "id": "623605ba-164a-4b10-a0bf-be13afd7c81e",
+    "name": "Lyric Cruickshank",
+    "email": "Lyric.Cruickshank@hotmail.com",
+    "city": "East Cassandre",
+    "username": "Lyric58",
+    "status": "Active",
+    "avatar": "https://i.pravatar.cc/150?u=Lyric.Cruickshank@hotmail.com"
+  }
+]

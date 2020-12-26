@@ -10,11 +10,11 @@ class UserRepository {
     let filteredUsers = this._users;
 
     if (filters.city) {
-      filteredUsers = this._users.filter(user => user.city === filters.city);
+      filteredUsers = filteredUsers.filter(user => user.city === filters.city);
     }
     if (filters.status) {
       const status = flatten([filters.status]);
-      filteredUsers = this._users.filter(user => indexOf(user.status.toLowerCase(), status.map(toLower)) !== -1)
+      filteredUsers = filteredUsers.filter(user => indexOf(user.status.toLowerCase(), status.map(toLower)) !== -1)
     }
 
     return filteredUsers;

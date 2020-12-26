@@ -1,4 +1,4 @@
-import {User, UserStatus} from "../pages/dto/user";
+import {User, UserStatus} from "./dto/user";
 import axios from "axios";
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {FilterMap} from "../hooks/filters.hook";

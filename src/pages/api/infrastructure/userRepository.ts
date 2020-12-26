@@ -1,4 +1,4 @@
-import {User, UserStatus} from "../../dto/user";
+import {User, UserStatus} from "../../../domain/dto/user";
 import users from './users.json';
 import {FilterMap} from "../../../hooks/filters.hook";
 import {adjust, findIndex, flatten, indexOf, propEq, toLower} from "ramda";

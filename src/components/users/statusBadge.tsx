@@ -1,5 +1,5 @@
 import React from "react";
-import {UserStatus} from "../../pages/dto/user";
+import {UserStatus} from "../../domain/dto/user";
 
 export const ActiveStatus = () => {
   return <span

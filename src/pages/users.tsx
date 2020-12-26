@@ -1,5 +1,5 @@
 import React from 'react'
-import {User} from "./dto/user";
+import {User} from "../domain/dto/user";
 import {useModal} from "react-modal-hook";
 import {FiltersDialog} from "../components/users/filters.dialog";
 import {useFetchUsers, useBlockUser, onApproveUser} from "../domain/user.service";

@@ -4,9 +4,10 @@ import {useMutation, useQuery, useQueryClient} from "react-query";
 import {FilterMap} from "../hooks/filters.hook";
 import {useToasts} from 'react-toast-notifications'
 import {adjust, findIndex, propEq} from "ramda";
+import { stringify } from "query-string";
 
 export const fetchUsers = async (filters: FilterMap): Promise<User[]> => {
-  const res = await axios.get('api/users', {params: filters})
+  const res = await axios.get('api/users', {params: filters, paramsSerializer: params => stringify(params, { arrayFormat: 'none' })})
   return res.data;
 }
 

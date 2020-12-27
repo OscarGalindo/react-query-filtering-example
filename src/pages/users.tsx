@@ -1,12 +1,17 @@
 import React from 'react'
-import {User} from "../domain/dto/user";
+import {User, UserStatus} from "../domain/dto/user";
 import {useModal} from "react-modal-hook";
 import {FiltersDialog} from "../components/users/filters.dialog";
-import {useFetchUsers, useBlockUser, onApproveUser} from "../domain/user.service";
+import {onApproveUser, useBlockUser, useFetchUsers} from "../domain/user.service";
 import {useFilters} from "../hooks/filters.hook";
 import {UserRowStatusBadge} from "../components/users/statusBadge";
+import {isEmpty, toPairs} from "ramda";
 
-const UserRow = ({user, onRemove, onApprove}: { user: User, onRemove: (id: string) => void, onApprove: (id: string) => void }) => <tr>
+const UserRow = ({
+                   user,
+                   onRemove,
+                   onApprove
+                 }: { user: User, onRemove: (id: string) => void, onApprove: (id: string) => void }) => <tr>
   <td className="px-6 py-4 whitespace-nowrap">
     <div className="flex items-center">
       <div className="flex-shrink-0 h-10 w-10">
@@ -37,17 +42,47 @@ const UserRow = ({user, onRemove, onApprove}: { user: User, onRemove: (id: strin
     <div className="h-full  flex flex-row space-x-6 items-center justify-end">
       <div className="w-5 h-5 cursor-pointer text-gray-500 hover:text-green-500" onClick={() => onApprove(user.id)}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          <path fillRule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clipRule="evenodd"/>
         </svg>
       </div>
       <div className="w-5 h-5 cursor-pointer text-gray-500 hover:text-red-500" onClick={() => onRemove(user.id)}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" />
+          <path fillRule="evenodd"
+                d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
+                clipRule="evenodd"/>
         </svg>
       </div>
     </div>
   </td>
 </tr>;
+
+export const FilterValues = ({filterKey, values}: { values: string[], filterKey: string }) => {
+  switch (filterKey) {
+    case "city":
+      return <span>{values.join(" ")}</span>;
+    case "status":
+      return <>{values.map(status => <UserRowStatusBadge status={status as UserStatus}/>)}</>;
+    default:
+      return null;
+  }
+};
+
+const ActiveFilters = ({filters}) => {
+  return <div className="flex flex-row space-x-12">
+    {toPairs(filters).map(([key, values]) => {
+      if(isEmpty(values)) return null;
+
+      return <div className="flex flex-row items-center space-x-4 rounded-lg px-4 py-1 border bg-gray-50">
+        <div className="capitalize text-sm text-gray-400">{key}</div>
+        <div className="flex flex-row items-center space-x-4 capitalize text-gray-800">
+          <FilterValues filterKey={key} values={values as any}/>
+        </div>
+      </div>
+    })}
+  </div>
+};
 
 export default function Users() {
   const filters = useFilters(["city", "status"]);
@@ -55,7 +90,9 @@ export default function Users() {
   const removeUserMutation = useBlockUser(filters.current);
   const approveUserMutation = onApproveUser(filters.current);
 
-  const [showFilters, hideFilters] = useModal(() => <FiltersDialog closeAfterApply onClose={hideFilters} onApply={filters.apply} currentFilters={filters.current}/>, [filters.current])
+  const [showFilters, hideFilters] = useModal(() => <FiltersDialog closeAfterApply onClose={hideFilters}
+                                                                   onApply={filters.apply}
+                                                                   currentFilters={filters.current}/>, [filters.current])
 
   if (users.isLoading) {
     return <div className="w-full min-h-screen flex items-center justify-center">
@@ -63,7 +100,7 @@ export default function Users() {
     </div>
   }
 
-  if(users.isError) {
+  if (users.isError) {
     return <div className="w-full min-h-screen flex items-center justify-center">
       <h2>Error!</h2>
     </div>
@@ -87,6 +124,9 @@ export default function Users() {
             <span>Filters</span>
           </div>
         </div>
+        {!filters.isEmpty && <div>
+          <ActiveFilters filters={filters.current}/>
+        </div>}
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -115,7 +155,8 @@ export default function Users() {
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {users.data.map(user => <UserRow user={user} key={user.id} onRemove={removeUserMutation.mutate} onApprove={approveUserMutation.mutate}/>)}
+                {users.data.map(user => <UserRow user={user} key={user.id} onRemove={removeUserMutation.mutate}
+                                                 onApprove={approveUserMutation.mutate}/>)}
                 </tbody>
               </table>
             </div>

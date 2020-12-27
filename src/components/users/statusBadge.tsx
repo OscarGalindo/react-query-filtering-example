@@ -17,11 +17,17 @@ export const BlockedStatus = () => {
 }
 
 export const UserRowStatusBadge = ({status}: { status: UserStatus }) => {
-  switch (status) {
+  switch (status as any) {
+    case "Active":
+    case "active":
     case UserStatus.Active:
       return <ActiveStatus/>
+    case "Pending":
+    case "pending":
     case UserStatus.Pending:
       return <PendingStatus/>
+    case "Blocked":
+    case "blocked":
     case UserStatus.Blocked:
       return <BlockedStatus/>
   }
